@@ -19,17 +19,6 @@
     padding: 0 var(--default-layout-horizontal-spacer);
 }
 
-
-
-.clear-btn,
-.loading{
-    position: absolute;
-    right: calc(var(--search-btn-width) + 16px);
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(22,24,35,0.34);
-}
-
 .actions{
     display: flex;
 }

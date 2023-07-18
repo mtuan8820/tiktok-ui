@@ -12,7 +12,12 @@ import {
 import { useState, useEffect, useRef } from 'react';
 import { useDebounce } from '~/hooks';
 import { ManifyingGlassIcon } from '~/components/icons';
+import {get} from '~/utils/request';
+import { search } from '~/apiServices/searchService';
+
+
 const cx = classNames.bind(styles);
+
 
 function Search () { 
     const [searchValue,setSearchValue] = useState('');
@@ -29,16 +34,17 @@ function Search () {
             setSearchResult([]);
             return;
         }
-        setLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data)
-                setLoading(false)
-            })
-            .catch(() =>{
-                setLoading(false)
-            })
+
+        const fetchApi = async () => {
+            setLoading(true)
+            const result = await search(debounce)
+            setSearchResult(result)
+            setLoading(false)
+        }
+        fetchApi()
+        
+       
+        
     },[debounce])
 
     const handleClearInput = () => {setSearchValue('');inputRef.current.focus()}

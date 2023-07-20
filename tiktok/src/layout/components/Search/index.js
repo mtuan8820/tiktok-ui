@@ -11,9 +11,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect, useRef } from 'react';
 import { useDebounce } from '~/hooks';
-import { ManifyingGlassIcon } from '~/components/icons';
-import {get} from '~/utils/request';
-import { search } from '~/apiServices/searchService';
+import { ManifyingGlassIcon } from '~/components/Icons';
+import { search } from '~/services/searchService';
 
 
 const cx = classNames.bind(styles);
@@ -48,10 +47,18 @@ function Search () {
     },[debounce])
 
     const handleClearInput = () => {setSearchValue('');inputRef.current.focus()}
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if(!searchValue.startsWith(' ')){
+            setSearchValue(searchValue)
+        }
+        
+    }
 
     return (
     <HeadlessTippy
         interactive = 'true'
+        appendTo={() => document.body}
         visible = {showSearchResult && searchResult.length > 0 }
         onClickOutside={() => setShowSearchResult(false)}
         render={attrs =>(
@@ -75,7 +82,7 @@ function Search () {
                 value={searchValue}
                 placeholder='Search accounts and videos' 
                 spellCheck={false} 
-                onChange={e => setSearchValue(e.target.value)} 
+                onChange={handleChange} 
                 onFocus={() => setShowSearchResult(true)}
             />
             {
@@ -88,7 +95,7 @@ function Search () {
             
             {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
             
-            <button className={cx('search-btn')}>
+            <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                 <ManifyingGlassIcon />
             </button>
         </div>

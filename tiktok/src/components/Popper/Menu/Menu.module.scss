@@ -24,9 +24,14 @@
     }
 }
 
+.menu-body{
+    overflow-y: auto;
+}
+
 //header
 .header{
     position: relative;
+    flex-shrink: 0;
     height: 50px;
     margin-top: -8px;
 }

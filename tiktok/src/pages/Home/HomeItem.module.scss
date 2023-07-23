@@ -1,0 +1,113 @@
+.item{
+    width: 592px;
+    padding: 20px 0;
+    display: flex;
+}
+
+.item+.item{
+    border-top: 1px solid #e3e3e4;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ml-12{
+    margin-left: 12px;
+    flex: 1;
+}
+
+.avatar{
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    object-fit: contain;
+    align-self: flex-start;
+}
+
+.info{
+    width: 410px;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+}
+
+.username{
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 2.4rem;
+}
+
+.name{
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 4px;
+}
+
+.check-icon{
+    margin-left: 4px;
+    font-size: 1.4rem;
+    color: #20d5ec;
+}
+
+.video-desc{
+
+}
+
+.video-cap{
+
+}
+
+.video-hashtag{
+
+}
+
+.video-music{
+
+}
+
+.body{
+    display: flex;    
+}
+
+
+
+.video{
+    width: 277px;
+    height: 485px;
+    border-radius: 8px;
+    border: solid 1px #ccc;
+    margin-right: 20px;
+}
+
+.video-thumbnail{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+    
+}
+
+.buttons{
+    align-self: flex-end;
+}
+
+.button-item{
+    margin-top: 8px;
+}
+
+.quantity{
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: center;
+    margin-top: 6px;
+}

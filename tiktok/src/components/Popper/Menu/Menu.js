@@ -16,7 +16,6 @@ function Menu({children, items = [], hideOnClick = false, onChange = defaultFn})
     const current = submenu[submenu.length-1]
 
     const renderItems = () => {
-        
         return current.data.map((item,index) => {
             const isParent = !!item.children;
             return <MenuItem 
@@ -34,6 +33,9 @@ function Menu({children, items = [], hideOnClick = false, onChange = defaultFn})
         })
     }
     
+    const handleResetToFirstPage = () => {
+        setSubmenu(prev => prev.slice(0,1))
+    }
 
     return ( 
         <Tippy
@@ -52,7 +54,7 @@ function Menu({children, items = [], hideOnClick = false, onChange = defaultFn})
                     </PopperWrapper>
                 </div>
             )}
-            onHide={() => setSubmenu(prev => prev.slice(0,1))}
+            onHide={handleResetToFirstPage}
         >
             {children}
         </Tippy>

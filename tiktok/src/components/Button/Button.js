@@ -8,6 +8,10 @@ function Button(
         className,
         to,
         href,
+        children, 
+        leftIcon,
+        rightIcon,
+        onClick, 
         disabled = false, 
         rounded = false,
         primary = false, 
@@ -15,10 +19,6 @@ function Button(
         underline = false, 
         small = false, 
         large = false, 
-        children, 
-        leftIcon,
-        rightIcon,
-        onClick, 
         ...passProps
     }){
         let Comp = 'button'

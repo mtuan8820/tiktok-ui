@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'
-import Menu from '~/components/Popper/Menu'
+import Menu from '~/components/Popper/Menu/Menu'
 import { MailboxIcon, MessageIcon, UploadIcon } from '~/components/Icons'
 import Image from '~/components/Image/Image'
 import Search from '../Search'
@@ -170,7 +170,7 @@ function Header(){
                         ):(
                             <>
                                 <Button underline>Upload</Button>
-                                <Button primary  >
+                                <Button primary >
                                     Log in
                                 </Button>
                             </>

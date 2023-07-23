@@ -1,6 +1,11 @@
+import HomeItem from "./HomeItem";
+
 function Home(){
     return(
-        <h2>Home Page</h2>
+        <div>
+            <HomeItem />
+            <HomeItem />
+        </div>
     )
 }
 

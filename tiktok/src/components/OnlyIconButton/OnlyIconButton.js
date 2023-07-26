@@ -5,12 +5,15 @@ import PropTypes from 'prop-types'
 const cx = classNames.bind(styles)
 
 function OnlyIconButton(
-    {
+    {   
+        
         className,
         to,
         href,
         onClick,
         icon,
+        backgroundTransperent=false,
+        whiteIcon=false,
         ...passProps
     }
     ){
@@ -22,6 +25,8 @@ function OnlyIconButton(
 
     const classes = cx('wrapper',{
         [className]:className,
+        backgroundTransperent,
+        whiteIcon,
     })
 
     if(to){props.to = to; Comp = 'Link'}

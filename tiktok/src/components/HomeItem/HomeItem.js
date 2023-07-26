@@ -5,16 +5,17 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import Button from "~/components/Button/Button";
 import OnlyIconButton from "~/components/OnlyIconButton/OnlyIconButton";
 import { CommentIcon, HeartIcon, PinIcon, ShareIcon } from "~/components/Icons";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const cx = classNames.bind(styles)
 
-function HomeItem(){
+function HomeItem({data}){
     return (
         <div className={cx("item")}>
             <img 
                 className={cx("avatar")} 
                 alt=""
-                src="https://i.pinimg.com/564x/b4/2a/ea/b42aeac8b64fece1a4c0be331af13c6d.jpg"
+                src={data.user.avatar}
             />
 
             <div className={cx('ml-12')}>
@@ -22,43 +23,41 @@ function HomeItem(){
                 <div className={cx("header")}>
                     <div className={cx('info')}>
                         <div className={cx('user-info')}>
-                            <p className={cx('username')}>Raiden Shogun</p>
-                            <FontAwesomeIcon className={cx('check-icon')} icon={faCheckCircle} />
-                            <p className={cx('name')}>raiden cute</p>
+                            <p className={cx('username')}>{data.user.nickname}</p>
+                            
+                            {data.user.tick && <FontAwesomeIcon className={cx('check-icon')} icon={faCheckCircle} />}
+                            <p className={cx('name')}>{data.user.nickname}</p>
                         </div>
                         <div className={cx('video-desc')}>
                             <div className={cx('video-cap')}>
-                                EI dances with the trend
-                            </div>
-                            <div className={cx('video-hashtag')}>
-                                #genshinimpact #ei #raidenshogun #dance #CapCut
+                                {data.description}
                             </div>
                             <div className={cx('video-music')}>
-                                Sea Of Problems - Glichery
+                                {data.music}
                             </div>
                         </div>
                     </div>
-                    <Button primary>Follow</Button>
+                    <Button small outline>Follow</Button>
                 </div>
                 {/* body */}
                 <div className={cx("body")}>
                     <div className={cx('video')}>
-                        <img
-                            className={cx('video-thumbnail')}
-                            src="https://pbs.twimg.com/media/Fq-_1WMaMAAjLfJ?format=jpg&name=900x900"
-                            alt=""
-                        />
+                        <VideoPlayer data={{
+                            poster:data.thumb_url,
+                            src: data.file_url,
+                            type: data.meta.mime_type
+                            }}  />
                     </div>
                     <div className={cx('buttons')}>
                         <div className={cx('button-item')}>
                             <OnlyIconButton icon={<HeartIcon />}/> 
-                            <div className={cx('quantity')}>477.5K</div>
+                            <div className={cx('quantity')}>{data.likes_count}</div>
                             <OnlyIconButton icon={<CommentIcon/>}/> 
-                            <div className={cx('quantity')}>477.5K</div>
+                            <div className={cx('quantity')}>{data.comments_count}</div>
                             <OnlyIconButton icon={<PinIcon />}/> 
-                            <div className={cx('quantity')}>477.5K</div>
+                            <div className={cx('quantity')}>{data.views_count}</div>
                             <OnlyIconButton icon={<ShareIcon />}/> 
-                            <div className={cx('quantity')}>477.5K</div>
+                            <div className={cx('quantity')}>{data.shares_count}</div>
                         </div>
                         
                     </div>

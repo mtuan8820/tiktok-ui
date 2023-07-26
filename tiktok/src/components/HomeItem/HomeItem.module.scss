@@ -58,27 +58,9 @@
     color: #20d5ec;
 }
 
-.video-desc{
-
-}
-
-.video-cap{
-
-}
-
-.video-hashtag{
-
-}
-
-.video-music{
-
-}
-
 .body{
     display: flex;    
 }
-
-
 
 .video{
     width: 277px;
@@ -86,6 +68,7 @@
     border-radius: 8px;
     border: solid 1px #ccc;
     margin-right: 20px;
+    overflow: hidden;
 }
 
 .video-thumbnail{

@@ -15,7 +15,7 @@ function AccountPreview(){
                     src="https://i.pinimg.com/200x150/03/fe/31/03fe31dfb42991dae86f9a326b6eaaec.jpg"
                     alt=""
                 />
-                <div><Button primary small> Follow</Button></div>
+                <div><Button primary small className={cx('follow-btn')}> Follow</Button></div>
             </div>
             <div className={cx('body')}>
                 <p className={cx('username')}>

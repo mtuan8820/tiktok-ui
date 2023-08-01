@@ -12,7 +12,7 @@
     height: auto;
 }
 
-.controller{
+.controll-buttons{
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -34,6 +34,8 @@
     right: 26px;
     .input-volume{
         -webkit-appearance: none;
+        -moz-appearance :none;
+        appearance :none;
         background-color: rgba(255, 255, 255, 0.34);
         transform: rotate(-90deg);
         height: 2px;
@@ -67,4 +69,91 @@
     background-color: transparent;
     position: absolute;
     bottom: 23px;
+}
+
+.time{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 12px;
+    display: flex;
+    margin-bottom: 12px;
+    align-items: center;
+    .input[type="range"]::-webkit-slider-runnable-track {
+        background: #053a5f;
+        height: 2px;
+    }
+}
+
+.timeline{
+    --c: #fff; /* active color */
+    --g: 0px; /* the gap */
+    --l: 4px; /* line thickness*/
+    --s: 15px; /* thumb size*/
+    -webkit-appearance: none;
+    -moz-appearance :none;
+    appearance :none;
+    cursor: pointer;
+    flex:1;
+    height: 2px;
+    background: none;
+    --_c: color-mix(in srgb, var(--c), #000 var(--p,0%));
+    overflow: hidden;
+    &:focus-visible,
+    &:hover{
+        height: var(--s);
+    }
+
+    &:active,
+    &:focus-visible{
+        --_b: var(--s)
+    }
+    &::-webkit-slider-thumb {
+        margin-left: calc(0px - var(--s));
+        -webkit-appearance: none;
+        appearance: none;
+        height: var(--s);
+        background-color: #fff;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        box-shadow: 0 0 0 var(--_b,var(--l)) inset var(--_c);
+        border-image: linear-gradient(90deg, var(--_c) 50%,#ababab 0) 1/0 100vw/0 calc(100vw + var(--g));
+        clip-path:polygon(
+           0     calc(50% + var(--l)/2),
+          -100vw calc(50% - var(--l)/2),
+           0     calc(50% - var(--l)/2),
+           0 0,
+           100% 0,
+           100%  calc(50% - var(--l)/2),
+           100vw calc(50% - var(--l)/2),
+           100%  calc(50% + var(--l)/2),
+           100% 100%,
+           0 100%);
+    }
+    &::-webkit-progress-value{
+        background-color: #fff;
+    }
+}
+
+.time-current{
+    font-size: 1rem;
+    color: #fff;
+    margin-left: 16px;
+}
+
+.options{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.controll-buttons, .time{
+    opacity: 0;
+    transition: .5s; 
+}
+
+.wrapper:hover .controll-buttons, 
+.wrapper:hover .time{
+    opacity: 1;
+    transition: .5s;
 }

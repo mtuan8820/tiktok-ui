@@ -6,6 +6,7 @@ import Button from "~/components/Button/Button";
 import OnlyIconButton from "~/components/OnlyIconButton/OnlyIconButton";
 import { CommentIcon, HeartIcon, PinIcon, ShareIcon } from "~/components/Icons";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import VideoOptions from "../VideoOptions/VideoOptions";
 
 const cx = classNames.bind(styles)
 
@@ -41,16 +42,22 @@ function HomeItem({data}){
                 </div>
                 {/* body */}
                 <div className={cx("body")}>
+                    
                     <div className={cx('video')}>
+                        <div className={cx('video-options')}>
+                            <VideoOptions/>
+                        </div>
                         <VideoPlayer data={{
                             poster:data.thumb_url,
                             src: data.file_url,
-                            type: data.meta.mime_type
+                            type: data.meta.mime_type,
+                            duration_string: data.meta.playtime_string,
+                            duration: data.meta.playtime_seconds
                             }}  />
                     </div>
                     <div className={cx('buttons')}>
                         <div className={cx('button-item')}>
-                            <OnlyIconButton icon={<HeartIcon />}/> 
+                            <OnlyIconButton icon={<HeartIcon />} /> 
                             <div className={cx('quantity')}>{data.likes_count}</div>
                             <OnlyIconButton icon={<CommentIcon/>}/> 
                             <div className={cx('quantity')}>{data.comments_count}</div>

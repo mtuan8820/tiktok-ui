@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import HomeItem from "~/components/HomeItem/HomeItem";
 import { getListVideo } from "~/services/getListVideoService";
 
+import classNames from "classnames/bind";
+import styles from './Home.module.scss'
+
+const cx = classNames.bind(styles);
+
 function Home(){
     const [contentData,setContentData] = useState([])
     const [page,setPage] = useState(1);
@@ -26,7 +31,7 @@ function Home(){
     },[])
     return(
         
-        <div>
+        <div className={cx('wrapper')}>
             {
                 contentData.map((item,index)=>(
                     <HomeItem data={item} key={index} />

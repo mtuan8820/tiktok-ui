@@ -2,6 +2,7 @@
     width: 592px;
     padding: 20px 0;
     display: flex;
+    cursor: pointer;
 }
 
 .item+.item{
@@ -60,6 +61,21 @@
 
 .body{
     display: flex;    
+    position: relative;
+}
+
+.video-options{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 220px;
+    transition: .5s; 
+    opacity: 0; 
+}
+
+.video:hover .video-options{
+    opacity: 1;
+    
 }
 
 .video{
